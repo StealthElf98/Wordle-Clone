@@ -8,19 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		22EB980428187C8E00B07BD9 /* WordleCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB980328187C8E00B07BD9 /* WordleCloneApp.swift */; };
-		22EB980628187C8E00B07BD9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB980528187C8E00B07BD9 /* ContentView.swift */; };
+		22EB980628187C8E00B07BD9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB980528187C8E00B07BD9 /* GameView.swift */; };
 		22EB980828187C9000B07BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EB980728187C9000B07BD9 /* Assets.xcassets */; };
 		22EB980B28187C9000B07BD9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EB980A28187C9000B07BD9 /* Preview Assets.xcassets */; };
 		22EB981228187E0300B07BD9 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22EB981128187E0300B07BD9 /* Launch Screen.storyboard */; };
+		22EB98152818835800B07BD9 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB98142818835800B07BD9 /* ColorExtension.swift */; };
+		22EB98192818848400B07BD9 /* Guess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB98182818848400B07BD9 /* Guess.swift */; };
+		22EB981C2818891400B07BD9 /* GuessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB981B2818891400B07BD9 /* GuessView.swift */; };
+		22EB981F28188DFE00B07BD9 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB981E28188DFE00B07BD9 /* DataModel.swift */; };
+		22EB98212818A65500B07BD9 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB98202818A65500B07BD9 /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		22EB980028187C8E00B07BD9 /* WordleClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordleClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EB980328187C8E00B07BD9 /* WordleCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleCloneApp.swift; sourceTree = "<group>"; };
-		22EB980528187C8E00B07BD9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		22EB980528187C8E00B07BD9 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		22EB980728187C9000B07BD9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22EB980A28187C9000B07BD9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22EB981128187E0300B07BD9 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		22EB98142818835800B07BD9 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		22EB98182818848400B07BD9 /* Guess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Guess.swift; sourceTree = "<group>"; };
+		22EB981B2818891400B07BD9 /* GuessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessView.swift; sourceTree = "<group>"; };
+		22EB981E28188DFE00B07BD9 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		22EB98202818A65500B07BD9 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +64,10 @@
 			isa = PBXGroup;
 			children = (
 				22EB980328187C8E00B07BD9 /* WordleCloneApp.swift */,
-				22EB980528187C8E00B07BD9 /* ContentView.swift */,
+				22EB98172818846B00B07BD9 /* Models */,
+				22EB981A281888FA00B07BD9 /* Views */,
+				22EB981D28188DBA00B07BD9 /* ViewModels */,
+				22EB98132818832A00B07BD9 /* Extensions */,
 				22EB981128187E0300B07BD9 /* Launch Screen.storyboard */,
 				22EB980728187C9000B07BD9 /* Assets.xcassets */,
 				22EB980928187C9000B07BD9 /* Preview Content */,
@@ -68,6 +81,40 @@
 				22EB980A28187C9000B07BD9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		22EB98132818832A00B07BD9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				22EB98142818835800B07BD9 /* ColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		22EB98172818846B00B07BD9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				22EB98182818848400B07BD9 /* Guess.swift */,
+				22EB98202818A65500B07BD9 /* Global.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		22EB981A281888FA00B07BD9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				22EB980528187C8E00B07BD9 /* GameView.swift */,
+				22EB981B2818891400B07BD9 /* GuessView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		22EB981D28188DBA00B07BD9 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				22EB981E28188DFE00B07BD9 /* DataModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,8 +188,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22EB980628187C8E00B07BD9 /* ContentView.swift in Sources */,
+				22EB98152818835800B07BD9 /* ColorExtension.swift in Sources */,
+				22EB981C2818891400B07BD9 /* GuessView.swift in Sources */,
+				22EB98192818848400B07BD9 /* Guess.swift in Sources */,
+				22EB980628187C8E00B07BD9 /* GameView.swift in Sources */,
 				22EB980428187C8E00B07BD9 /* WordleCloneApp.swift in Sources */,
+				22EB981F28188DFE00B07BD9 /* DataModel.swift in Sources */,
+				22EB98212818A65500B07BD9 /* Global.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
