@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GuessView: View {
     
-    @Binding var guess : Guess // Binding is used to forward value from one view to another
+    @Binding var guess : Guess // Prosledjuje vrednost iz jednog View-a u drugi View
     
     var body: some View {
         HStack(spacing: 3){

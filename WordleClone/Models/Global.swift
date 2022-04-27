@@ -32,4 +32,15 @@ enum Global {
             return 500
         }
     }
+    
+    static var keyboardScale : CGFloat {
+        switch minDimensions {
+        case 0...430 :
+            return screendWidth / 390 // Za mali iPhone
+        case 431...1000:
+            return CGFloat(1.2) // Za mali iPad
+        default :
+            return CGFloat(1.6) // Za veliki iPad
+        }
+    }
 }

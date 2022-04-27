@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22AF57F3281959D3003B7A7C /* LetterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF57F2281959D3003B7A7C /* LetterButtonView.swift */; };
+		22AF57F528195BB8003B7A7C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF57F428195BB8003B7A7C /* Keyboard.swift */; };
 		22EB980428187C8E00B07BD9 /* WordleCloneApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB980328187C8E00B07BD9 /* WordleCloneApp.swift */; };
 		22EB980628187C8E00B07BD9 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22EB980528187C8E00B07BD9 /* GameView.swift */; };
 		22EB980828187C9000B07BD9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22EB980728187C9000B07BD9 /* Assets.xcassets */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22AF57F2281959D3003B7A7C /* LetterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonView.swift; sourceTree = "<group>"; };
+		22AF57F428195BB8003B7A7C /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		22EB980028187C8E00B07BD9 /* WordleClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordleClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22EB980328187C8E00B07BD9 /* WordleCloneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleCloneApp.swift; sourceTree = "<group>"; };
 		22EB980528187C8E00B07BD9 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 			children = (
 				22EB980528187C8E00B07BD9 /* GameView.swift */,
 				22EB981B2818891400B07BD9 /* GuessView.swift */,
+				22AF57F2281959D3003B7A7C /* LetterButtonView.swift */,
+				22AF57F428195BB8003B7A7C /* Keyboard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,9 +194,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22AF57F3281959D3003B7A7C /* LetterButtonView.swift in Sources */,
 				22EB98152818835800B07BD9 /* ColorExtension.swift in Sources */,
 				22EB981C2818891400B07BD9 /* GuessView.swift in Sources */,
 				22EB98192818848400B07BD9 /* Guess.swift in Sources */,
+				22AF57F528195BB8003B7A7C /* Keyboard.swift in Sources */,
 				22EB980628187C8E00B07BD9 /* GameView.swift in Sources */,
 				22EB980428187C8E00B07BD9 /* WordleCloneApp.swift in Sources */,
 				22EB981F28188DFE00B07BD9 /* DataModel.swift in Sources */,

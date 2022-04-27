@@ -10,15 +10,24 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var dm : DataModel
     var body: some View {
-        NavigationView{
+        NavigationView {
             VStack{
-                GuessView(guess: $dm.guesses[0])
-                GuessView(guess: $dm.guesses[1])
-                GuessView(guess: $dm.guesses[2])
-                GuessView(guess: $dm.guesses[3])
-                GuessView(guess: $dm.guesses[4])
+                Spacer()
+                VStack{
+                    GuessView(guess: $dm.guesses[0])
+                    GuessView(guess: $dm.guesses[1])
+                    GuessView(guess: $dm.guesses[2])
+                    GuessView(guess: $dm.guesses[3])
+                    GuessView(guess: $dm.guesses[4])
+                }
+                .frame(width: Global.boardWidth, height: Global.boardWidth * 6 / 5, alignment: .center)
+
+                Spacer()
+                Keyboard()
+                    .scaleEffect(Global.keyboardScale)
+                    .padding()
+                Spacer()
             }
-            .frame(width: Global.boardWidth, height: Global.boardWidth * 6 / 5, alignment: .center)
             .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
