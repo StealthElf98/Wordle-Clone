@@ -20,11 +20,15 @@ struct Keyboard: View {
                 ForEach(topRow, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disableKeyboard)
+                .opacity(dm.disableKeyboard ? 0.6 : 1)
             }
             HStack(spacing: 2) {
                 ForEach(middleRow, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disableKeyboard)
+                .opacity(dm.disableKeyboard ? 0.6 : 1)
             }
             HStack(spacing: 2) {
                 Button {
@@ -36,9 +40,15 @@ struct Keyboard: View {
                 .frame(width: 60, height: 50, alignment: .center)
                 .foregroundColor(.primary)
                 .background(Color.unused)
+                .disabled(dm.currentWord.count < 5 || !dm.inPlay)
+                .opacity((dm.currentWord.count < 5 || !dm.inPlay) ? 0.6 : 1)
+                
                 ForEach(bottomRow, id: \.self) { letter in
                     LetterButtonView(letter: letter)
                 }
+                .disabled(dm.disableKeyboard)
+                .opacity(dm.disableKeyboard ? 0.6 : 1)
+                
                 Button {
                     dm.removeLastLetter()
                 } label: {
@@ -48,7 +58,10 @@ struct Keyboard: View {
                 .frame(width: 50, height: 50, alignment: .center)
                 .foregroundColor(.primary)
                 .background(Color.unused)
+                .disabled(dm.currentWord.count == 0 || !dm.inPlay)
+                .opacity((dm.currentWord.count == 5 || !dm.inPlay) ? 0.6 : 1)
             }
+            
         }
     }
 }
