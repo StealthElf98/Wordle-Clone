@@ -14,12 +14,19 @@ struct GuessView: View {
     var body: some View {
         HStack(spacing: 3){
             ForEach(0...4, id: \.self) { index in
-                Text(guess.guessLetters[index])
-                    .foregroundColor(.primary)
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                    .background(Color.systemBackgroundColor)
-                    .font(.system(size: 35, weight: .heavy))
-                    .border(Color(.secondaryLabel))
+                FlipView(isFlipped: $guess.cardFlipped[index]) {
+                    Text(guess.guessLetters[index])
+                        .foregroundColor(.primary)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                        .background(Color.systemBackgroundColor)
+                } back: {
+                    Text(guess.guessLetters[index])
+                        .foregroundColor(.white)
+                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
+                        .background(guess.bgColor[index])
+                }
+                .font(.system(size: 35, weight: .heavy))
+                .border(Color(.secondaryLabel))
             }
         }
     }

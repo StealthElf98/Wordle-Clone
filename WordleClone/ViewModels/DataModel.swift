@@ -12,6 +12,8 @@ class DataModel : ObservableObject {
     @Published var incorrectAttempts = [Int](repeating: 0, count: 6)
     
     var keyColors = [String : Color]()
+    var matchedLetters = [String]()
+    var missplacedLetters = [String]()
     var selectedWord = ""
     var currentWord = ""
     var attemptNumber = 0
@@ -32,6 +34,9 @@ class DataModel : ObservableObject {
         selectedWord = Global.commonWords.randomElement()!
         currentWord = ""
         inPlay = true
+        attemptNumber = 0
+        gameOver = false
+        print(selectedWord)
     }
     
     func newGame() {
@@ -48,6 +53,8 @@ class DataModel : ObservableObject {
         for letter in letters {
             keyColors[String(letter)] = .unused
         }
+        matchedLetters = []
+        missplacedLetters = []
     }
     
     //MARK: Gameplay
@@ -58,14 +65,17 @@ class DataModel : ObservableObject {
     
     func enterWord() {
         if currentWord == selectedWord {
-            setCurrentGuessColors()
+            DispatchQueue.main.async {
+                self.setCurrentGuessColors()
+            }
             gameOver = true
             inPlay = false
             print("You win!")
         }
-        if verifyWord() {
+        if !verifyWord() {
             setCurrentGuessColors()
             attemptNumber += 1
+            currentWord = ""
             if attemptNumber == 6 {
                 gameOver = true
                 inPlay = false
@@ -97,6 +107,58 @@ class DataModel : ObservableObject {
     }
     
     func setCurrentGuessColors() {
+        let correctLetters = selectedWord.map { String($0) }
+        var frequency = [String : Int]()
+        for letter in correctLetters {
+            frequency[letter, default: 0] += 1
+        }
+            
+        for index in 0...4 {
+            let correctLetter = correctLetters[index]
+            let guessLetter = guesses[attemptNumber].guessLetters[index]
+            if guessLetter == correctLetter {
+                guesses[attemptNumber].bgColor[index] = .correct
+                if !matchedLetters.contains(guessLetter) {
+                    matchedLetters.append(guessLetter)
+                    keyColors[guessLetter] = .correct
+                }
+                if missplacedLetters.contains(guessLetter) {
+                    if let index = missplacedLetters.firstIndex(where: {$0 == guessLetter}) {
+                        missplacedLetters.remove(at: index)
+                    }
+                }
+                frequency[guessLetter]! -= 1
+            }
+        }
         
+        for index in 0...4 {
+            let guessLetter = guesses[attemptNumber].guessLetters[index]
+            if correctLetters.contains(guessLetter) && guesses[attemptNumber].bgColor[index] != .correct &&
+            frequency[guessLetter]! > 0 {
+                guesses[attemptNumber].bgColor[index] = .misplaced
+                if !missplacedLetters.contains(guessLetter) && matchedLetters.contains(guessLetter){
+                    matchedLetters.append(guessLetter)
+                    keyColors[guessLetter] = .misplaced
+                }
+                frequency[guessLetter]! -= 1
+            }
+        }
+        
+        for index in 0...4 {
+            let guessLetter = guesses[attemptNumber].guessLetters[index]
+            if keyColors[guessLetter] != .correct && keyColors[guessLetter] != .misplaced {
+                keyColors[guessLetter] = .wrong
+            }
+        }
+        
+        flipCards(for: attemptNumber)
+    }
+    
+    func flipCards(for row : Int) {
+        for col in 0...4 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + Double(col) * 0.2) {
+                self.guesses[row].cardFlipped[col].toggle()
+            }
+        }
     }
 }
