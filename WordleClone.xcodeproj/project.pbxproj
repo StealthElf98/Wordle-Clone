@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		226DF68B283114B4002A888E /* FlipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DF68A283114B4002A888E /* FlipView.swift */; };
+		226DF68D28316ADA002A888E /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DF68C28316ADA002A888E /* ToastView.swift */; };
+		226DF68F283171E7002A888E /* Statistic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DF68E283171E7002A888E /* Statistic.swift */; };
+		226DF69128317AE1002A888E /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226DF69028317AE1002A888E /* StatsView.swift */; };
 		22AF57F3281959D3003B7A7C /* LetterButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF57F2281959D3003B7A7C /* LetterButtonView.swift */; };
 		22AF57F528195BB8003B7A7C /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AF57F428195BB8003B7A7C /* Keyboard.swift */; };
 		22CB8FD12819B853001B680D /* Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22CB8FD02819B853001B680D /* Shake.swift */; };
@@ -25,6 +28,9 @@
 
 /* Begin PBXFileReference section */
 		226DF68A283114B4002A888E /* FlipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipView.swift; sourceTree = "<group>"; };
+		226DF68C28316ADA002A888E /* ToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		226DF68E283171E7002A888E /* Statistic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statistic.swift; sourceTree = "<group>"; };
+		226DF69028317AE1002A888E /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		22AF57F2281959D3003B7A7C /* LetterButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterButtonView.swift; sourceTree = "<group>"; };
 		22AF57F428195BB8003B7A7C /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		22CB8FD02819B853001B680D /* Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shake.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 			children = (
 				22EB98182818848400B07BD9 /* Guess.swift */,
 				22EB98202818A65500B07BD9 /* Global.swift */,
+				226DF68E283171E7002A888E /* Statistic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -125,6 +132,8 @@
 				22EB981B2818891400B07BD9 /* GuessView.swift */,
 				22AF57F2281959D3003B7A7C /* LetterButtonView.swift */,
 				22AF57F428195BB8003B7A7C /* Keyboard.swift */,
+				226DF68C28316ADA002A888E /* ToastView.swift */,
+				226DF69028317AE1002A888E /* StatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -212,6 +221,7 @@
 				226DF68B283114B4002A888E /* FlipView.swift in Sources */,
 				22EB98152818835800B07BD9 /* ColorExtension.swift in Sources */,
 				22EB981C2818891400B07BD9 /* GuessView.swift in Sources */,
+				226DF68D28316ADA002A888E /* ToastView.swift in Sources */,
 				22EB98192818848400B07BD9 /* Guess.swift in Sources */,
 				22AF57F528195BB8003B7A7C /* Keyboard.swift in Sources */,
 				22EB980628187C8E00B07BD9 /* GameView.swift in Sources */,
@@ -219,6 +229,8 @@
 				22EB980428187C8E00B07BD9 /* WordleCloneApp.swift in Sources */,
 				22EB981F28188DFE00B07BD9 /* DataModel.swift in Sources */,
 				22EB98212818A65500B07BD9 /* Global.swift in Sources */,
+				226DF69128317AE1002A888E /* StatsView.swift in Sources */,
+				226DF68F283171E7002A888E /* Statistic.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

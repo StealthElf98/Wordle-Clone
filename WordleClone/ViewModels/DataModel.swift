@@ -10,6 +10,8 @@ import SwiftUI
 class DataModel : ObservableObject {
     @Published var guesses : [Guess] = []
     @Published var incorrectAttempts = [Int](repeating: 0, count: 6)
+    @Published var toastText : String?
+    @Published var showStats = false
     
     var keyColors = [String : Color]()
     var matchedLetters = [String]()
@@ -19,6 +21,8 @@ class DataModel : ObservableObject {
     var attemptNumber = 0
     var inPlay = false
     var gameOver = false
+    let toastWords = ["Genious", "Magnificent", "Impressive", "Splendid", "Great", "Uhh"]
+    var currentStat : Statistic
     
     var gameStarted : Bool {
         !currentWord.isEmpty || attemptNumber > 0
@@ -30,13 +34,8 @@ class DataModel : ObservableObject {
     
     //MARK: Setup
     init() {
+        currentStat = Statistic.loadStat()
         newGame()
-        selectedWord = Global.commonWords.randomElement()!
-        currentWord = ""
-        inPlay = true
-        attemptNumber = 0
-        gameOver = false
-        print(selectedWord)
     }
     
     func newGame() {
@@ -55,6 +54,12 @@ class DataModel : ObservableObject {
         }
         matchedLetters = []
         missplacedLetters = []
+        gameOver = false
+        inPlay = true
+        attemptNumber = 0
+        currentWord = ""
+        selectedWord = Global.commonWords.randomElement()!
+        print(selectedWord)
     }
     
     //MARK: Gameplay
@@ -65,21 +70,22 @@ class DataModel : ObservableObject {
     
     func enterWord() {
         if currentWord == selectedWord {
-            DispatchQueue.main.async {
-                self.setCurrentGuessColors()
-            }
+            self.setCurrentGuessColors()
+            showToast(with: toastWords[attemptNumber])
+            currentStat.update(win: true, index: attemptNumber)
             gameOver = true
             inPlay = false
             print("You win!")
         }
-        if !verifyWord() {
+        else if verifyWord() {
             setCurrentGuessColors()
             attemptNumber += 1
             currentWord = ""
             if attemptNumber == 6 {
+                currentStat.update(win: false)
                 gameOver = true
                 inPlay = false
-                print("You lose!")
+                showToast(with: selectedWord)
             }
             print("OK")
         } else {
@@ -87,7 +93,7 @@ class DataModel : ObservableObject {
                 incorrectAttempts[attemptNumber] += 1
             }
             incorrectAttempts[attemptNumber] -= 1
-            print("Word doesn't exist")
+            showToast(with: "Not in word list")
         }
     }
     
@@ -161,4 +167,20 @@ class DataModel : ObservableObject {
             }
         }
     }
+    
+    func showToast(with text: String?) {
+        withAnimation {
+            toastText = text
+        }
+        withAnimation(Animation.linear(duration: 0.2).delay(3)){
+            toastText = nil
+            if gameOver {
+                withAnimation(Animation.linear(duration: 0.2).delay(3)){
+                    showStats.toggle()
+                }
+            }
+        }
+    }
+    
+    
 }
