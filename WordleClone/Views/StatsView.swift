@@ -33,7 +33,7 @@ struct StatsView: View {
                 }
                 SingleView(value: dm.currentStat.streak, text: "Current Streak")
                 SingleView(value: dm.currentStat.maxStreak, text: "Max Streak")
-                    //.fixedSize(horizontal: false, vertical: true)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             Text("Guess Distribution")
                 .font(.headline)
@@ -65,6 +65,21 @@ struct StatsView: View {
                             }
                         }
                         Spacer()
+                    }
+                }
+                if dm.gameOver {
+                    HStack {
+                        Button {
+                            dm.shareResult()
+                        } label: {
+                            HStack {
+                                Image(systemName: "square.and.arrow.up")
+                                Text("Share")
+                            }
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(Color.correct)
+                        }
                     }
                 }
             }
