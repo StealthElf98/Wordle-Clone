@@ -15,11 +15,16 @@ struct WordleCloneApp: App {
     
     // Moze da se napravi u @main fajlu tako da se napravi samo 1 objekat
     @StateObject var dataModel = DataModel()
+    @StateObject var colorScheme = ColorSchemeManager()
     
     var body: some Scene {
         WindowGroup {
             GameView()
                 .environmentObject(dataModel)
+                .environmentObject(colorScheme)
+                .onAppear {
+                    colorScheme.setColorScheme()
+                }
         }
     }
 }
