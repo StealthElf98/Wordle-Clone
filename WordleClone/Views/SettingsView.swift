@@ -6,14 +6,16 @@
 //
 
 import SwiftUI
-
+ 
 struct SettingsView: View {
     @EnvironmentObject var csManager : ColorSchemeManager
+    @EnvironmentObject var dm : DataModel
     @Environment(\.dismiss) var dismiss
     
     var body: some View {
         NavigationView {
             VStack {
+                Toggle("Hard Mode", isOn: $dm.hardMode)
                 Text("Change Theme")
                 Picker("", selection: $csManager.colorScheme) {
                     Text("Dark").tag(ColorScheme.dark)
@@ -43,5 +45,6 @@ struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
             .environmentObject(ColorSchemeManager())
+            .environmentObject(DataModel())
     }
 }

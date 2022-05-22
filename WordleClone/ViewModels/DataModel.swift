@@ -12,10 +12,12 @@ class DataModel : ObservableObject {
     @Published var incorrectAttempts = [Int](repeating: 0, count: 6)
     @Published var toastText : String?
     @Published var showStats = false
+    @AppStorage("hardMode") var hardMode = false
     
     var keyColors = [String : Color]()
     var matchedLetters = [String]()
     var missplacedLetters = [String]()
+    var correctlyPlacedLetters = [String]()
     var selectedWord = ""
     var currentWord = ""
     var attemptNumber = 0
@@ -54,6 +56,7 @@ class DataModel : ObservableObject {
         }
         matchedLetters = []
         missplacedLetters = []
+        correctlyPlacedLetters = [String](repeating: "-", count: 5)
         gameOver = false
         inPlay = true
         attemptNumber = 0
@@ -78,6 +81,16 @@ class DataModel : ObservableObject {
             print("You win!")
         }
         else if verifyWord() {
+            if hardMode {
+                if let toastString = hardModeCorrectCheck() {
+                    showToast(with: toastString)
+                    return
+                }
+                if let toastString = hardModeMissplacedLettersCheck() {
+                    showToast(with: toastString)
+                    return
+                }
+            }
             setCurrentGuessColors()
             attemptNumber += 1
             currentWord = ""
@@ -112,6 +125,30 @@ class DataModel : ObservableObject {
         UIReferenceLibraryViewController.dictionaryHasDefinition(forTerm: currentWord)
     }
     
+    func hardModeCorrectCheck() -> String? {
+        let guessLetters = guesses[attemptNumber].guessLetters
+        for i in 0...4 {
+            if correctlyPlacedLetters[i] != "-" {
+                if guessLetters[i] != correctlyPlacedLetters[i] {
+                    let formatter = NumberFormatter()
+                    formatter.numberStyle = .ordinal
+                    return "\(formatter.string(for: i + 1)!) letter must be '\(correctlyPlacedLetters[i])'"
+                }
+            }
+        }
+        return nil
+    }
+    
+    func hardModeMissplacedLettersCheck() -> String? {
+        let guessLetters = guesses[attemptNumber].guessLetters
+        for letter in missplacedLetters {
+            if !guessLetters.contains(letter) {
+                return ("Must contain letter \(letter)")
+            }
+        }
+        return nil
+    }
+    
     func setCurrentGuessColors() {
         let correctLetters = selectedWord.map { String($0) }
         var frequency = [String : Int]()
@@ -133,6 +170,7 @@ class DataModel : ObservableObject {
                         missplacedLetters.remove(at: index)
                     }
                 }
+                correctlyPlacedLetters[index] = correctLetter
                 frequency[guessLetter]! -= 1
             }
         }
