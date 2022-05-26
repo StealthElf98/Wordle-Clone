@@ -20,7 +20,6 @@ struct SettingsView: View {
                 Picker("", selection: $csManager.colorScheme) {
                     Text("Dark").tag(ColorScheme.dark)
                     Text("Light").tag(ColorScheme.light)
-                    Text("System").tag(ColorScheme.unspecified)
                 }
                 .pickerStyle(.segmented)
                 Spacer()

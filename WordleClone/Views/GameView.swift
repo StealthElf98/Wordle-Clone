@@ -10,6 +10,7 @@ import SwiftUI
 struct GameView: View {
     @EnvironmentObject var dm : DataModel
     @State var showSettings = false
+    @State var showHelp = false
     
     var body: some View {
         ZStack{
@@ -41,7 +42,7 @@ struct GameView: View {
                     ToolbarItem(placement: .navigationBarLeading) {
                         HStack{
                             Button {
-                                
+                                showHelp.toggle()
                             } label: {
                                 Image(systemName: "questionmark.circle")
                             }
@@ -83,12 +84,16 @@ struct GameView: View {
                 .sheet(isPresented: $showSettings) {
                     SettingsView()
                 }
+                .sheet(isPresented: $showHelp) {
+                    HelpView()
+                }
             }
             if dm.showStats {
                 StatsView()
             }
         }
         .navigationViewStyle(.stack)
+        
     }
 }
 
