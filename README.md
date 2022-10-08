@@ -2,7 +2,8 @@
 iOS version of web game Wordle
 
 
+                                        
 
 
-https://user-images.githubusercontent.com/89274860/194708064-702b821b-e4af-47e0-8e85-7bf51d5a9f96.mp4
+https://user-images.githubusercontent.com/89274860/194708141-dad83f68-8cb5-4c69-aafd-fefe5f9fe79a.mp4
 
